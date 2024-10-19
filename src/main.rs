@@ -1,14 +1,10 @@
-use cursive::views::{Dialog, TextView};
+use cursive::views::{TextView};
 
 fn main() {
-    // Creates the cursive root - required for every application.
+
     let mut cursive = cursive::default();
 
-    // Creates a dialog with a single "Quit" button
-    cursive.add_layer(Dialog::around(TextView::new("Hello Dialog!"))
-        .title("Cursive")
-        .button("Quit", |s| s.quit()));
-
-    // Starts the event loop.
+    cursive.add_global_callback('q', |s| s.quit());
+    cursive.add_layer(TextView::new("Welcome to envoy! Press <q> to quit."));
     cursive.run();
 }
